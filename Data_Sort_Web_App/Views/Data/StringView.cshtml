@@ -1,0 +1,25 @@
+﻿@using Data_Sort_Web_App.Models
+
+@model SortingSteps
+<!-- SEO meta data for top results in the search engine list-->
+@{
+    ViewBag.Title = "StringView | Bubble Sorting | Bikramjeet Singh Ladania";
+
+}
+<br />
+<div class="panel panel-primary">
+    <div class="panel-heading" text-align="center">String Sorting Steps...</div>
+    <div class="panel-body">
+        <ul class="list-group" style="list-style-type:circle;">
+            @foreach (var item in Model.ArraySteps)
+            {
+                <a href="#" class="list-group-item">@Html.DisplayFor(e => item)</a>
+            }
+        </ul>
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Back to Data Sorting!", "Index")
+</div>
+
+

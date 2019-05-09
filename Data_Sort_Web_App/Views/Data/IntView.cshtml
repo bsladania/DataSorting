@@ -1,0 +1,55 @@
+﻿@using Data_Sort_Web_App.Models
+@model SortingSteps
+<!-- SEO meta data for top results in the search engine list-->
+@{
+    ViewBag.Title = "IntView | Bubble Sorting | Bikramjeet Singh Ladania";
+}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<div id="chartContainer">
+</div>
+@foreach (var element in Model.ArraySteps)
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function getRandomColor() {
+                var letters = '0123456789ABCDEF';
+                var color = '#';
+                for (var i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+            $('#chartContainer').append('<canvas id="@Html.DisplayFor(e => element)"><canvas>');
+            var ctx = document.getElementById('@Html.DisplayFor(e => element)').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'horizontalBar',
+                data: {
+                    labels: [@Html.DisplayFor(e => element)],
+                    datasets: [
+                        {
+                            label: "Sorting Steps",
+                            fill: true,
+                            barThickness: 0.5,
+                            backgroundColor: getRandomColor(),
+                            data: [@Html.DisplayFor(e => element)]
+                        }
+                    ]
+                }
+            });
+
+        });
+
+    </script>
+
+}
+
+    <div>
+        @Html.ActionLink("Back to Data Sorting!", "Index")
+    </div>
+
+
+
+
+
